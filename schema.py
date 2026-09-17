@@ -29,7 +29,7 @@ class Medico(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     nombre = Column(String, nullable=False)
     apellido = Column(String, nullable=False)
-    matricula = Column(String, nullable=False)
+    matricula = Column(String, nullable=False, unique=True)
     especialidad_id = Column(
         Integer,
         ForeignKey("especialidades.id"),
@@ -47,7 +47,7 @@ class Paciente(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     nombre = Column(String, nullable=False)
     apellido = Column(String, nullable=False)
-    dni = Column(String, nullable=False)
+    dni = Column(String, nullable=False, unique=True)
     obra_social = Column(String)
 
     turnos = relationship("Turno", back_populates="paciente")
